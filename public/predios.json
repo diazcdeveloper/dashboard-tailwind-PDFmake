@@ -1,0 +1,9 @@
+[
+    { "id": 1, "ciudad": "Sincelejo", "barrio": "Florencia", "direccion": "Cra 68# 74-161", "metrosCuadrados": 100 },
+    { "id": 2, "ciudad": "Barranquilla", "barrio": "El prado", "direccion": "123456", "metrosCuadrados": 120 },
+    { "id": 3, "ciudad": "Monteria", "barrio": "Villa Flores", "direccion": "43563546", "metrosCuadrados": 240 },
+    { "id": 4, "ciudad": "Cartagena", "barrio": "Barrio", "direccion": "63456345", "metrosCuadrados": 160 },
+    { "id": 5, "ciudad": "Bogota", "barrio": "Barrio", "direccion": "6345634", "metrosCuadrados": 350 },
+    { "id": 6, "ciudad": "Cali", "barrio": "Barrio", "direccion": "63456345", "metrosCuadrados": 480 },
+    { "id": 7, "ciudad": "Bucaramanga", "barrio": "Barrio", "direccion": "63456345", "metrosCuadrados": 200 }
+  ]
