@@ -3,13 +3,7 @@
 import React, { useState } from "react";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
-import { Bold } from "lucide-react";
-import { text } from "stream/consumers";
-import {
-  Content,
-  ContentImage,
-  TDocumentDefinitions,
-} from "pdfmake/interfaces";
+import { Content, TDocumentDefinitions } from "pdfmake/interfaces";
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -18,8 +12,8 @@ interface Radicacion {
   solicitud: string;
   predial: string;
   fecha: string;
-  img: String;
-  departamento:string;
+  img: string;
+  departamento: string;
   municipio: string;
   direccion: string;
   telefono: string;
@@ -33,7 +27,6 @@ interface Radicacion {
 
 const ConstanciaRadicacion: React.FC = () => {
   const [radicacionId, setRadicacionId] = useState<number | null>(null);
-
   const [radicacion, setRadicacion] = useState<Radicacion | null>(null);
 
   const handleSearch = async () => {
@@ -43,107 +36,220 @@ const ConstanciaRadicacion: React.FC = () => {
     setRadicacion(foundRadicacion || null);
   };
 
-  const generatePDF = () => {
+  const loadImageAsBase64 = (url: string): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.onload = function () {
+        const reader = new FileReader();
+        reader.onloadend = function () {
+          resolve(reader.result as string);
+        };
+        reader.readAsDataURL(xhr.response);
+      };
+      xhr.onerror = function () {
+        reject(new Error("Failed to load image"));
+      };
+      xhr.open("GET", url);
+      xhr.responseType = "blob";
+      xhr.send();
+    });
+  };
+
+  const generatePDF = async () => {
     if (!radicacion) return;
 
-    const logo: Content = {
-      image: 'src/assets/imgheader.png',
-      width: 100,
-    }
+    const imgHeader = await loadImageAsBase64("/imgheader.png");
+    const imgFooter = await loadImageAsBase64("/imgfooter.png");
+    const logo = await loadImageAsBase64("/logo.jpg");
 
-
-    // Definición del documento PDF
     const docDefinition: TDocumentDefinitions = {
-      header:{
-        columns:[
-          {
-            text: [
-              {text:'Sictax\n', bold: true, fontSize: 15},
-              {text: 'Gestion Catastral'},
-            ]
-          },
-          {
-            text: 'QR\n\n', alignment:'right', bold: true, fontSize: 30
-          },
-        ],
+      header: [
+        {
+          image: imgHeader,
+          width: 600,
+          margin: [0, 0, 0, 20],
+        },
+      ],
+      footer: function (currentPage, pageCount) {
+        return {
+          stack: [
+            // {
+            //   image: imgFooter,
+            //   width: 600,
+            // },
+            {
+              text: currentPage.toString() + " / " + pageCount,
+              alignment: "right",
+              margin: [0, 0, 30, 0],
+            },
+          ],
+        };
       },
-      content:[
-        
-        {text:'CONSTANCIA DE RADICACIÓN', bold: true, fontSize: 20, alignment: "center",  margin: [40,20]},
+      content: [
         {
-          text: 'Datos Solicitud', alignment: 'center'
+          columns: [
+            {
+              columns: [
+                {
+                  image: logo,
+                  width: 80,
+                },
+                {
+                  stack: [
+                    {
+                      text: "Sintax",
+                      bold: true,
+                      fontSize: 10,
+                    },
+                    {
+                      text: "Gestión Catastral",
+                      fontSize: 8,
+                    },
+                  ],
+                  margin: [0,30,0,0],
+                  //   text: "Sintax",
+                  //   bold: true,
+                  //   fontSize: 10,
+                  // },
+                  // {
+                  //   text: "Gestión Catastral",
+                  //   fontSize: 8,
+                },
+              ],
+            },
+
+            {
+              width: "50%",
+              alignment: "right",
+              stack: [
+                {
+                  qr: "text in QR",
+                  fit: 80,
+                },
+                {
+                  text: "Sello de radicacion",
+                  fontSize: 8,
+                  margin: [0, 5, 0, 0], // Margen superior para separar el texto del QR
+                },
+              ],
+            },
+          ],
+          margin: [0, 50, 0, 0],
         },
-        //tabla solicitud
+        {
+          text: "CONSTANCIA DE RADICACIÓN",
+          bold: true,
+          fontSize: 14,
+          alignment: "center",
+          margin: [0, 10],
+        },
+        { text: "Datos Solicitud", bold: true, alignment: "center" },
         {
           table: {
-            widths: ['*', '*', 280],
+            widths: ["*", "*", 280],
             body: [
-              ['Numero Solicitud', `${radicacion.solicitud}`, 'Numero Predial Nacional'],
-              ['Fecha Solicitud', `${radicacion.fecha}`, `${radicacion.predial}`]
-            ]
-          }
+              [
+                { text: "Numero Solicitud", bold: true },
+                `${radicacion.solicitud}`,
+                { text: "Numero Predial Nacional", bold: true },
+              ],
+              [
+                { text: "Fecha Solicitud", bold: true },
+                `${radicacion.fecha}`,
+                `${radicacion.predial}`,
+              ],
+            ],
+          },
         },
         {
-          text: 'Datos Solicitante', margin: [0, 30, 0, 0], alignment: 'center'
+          text: "Datos Solicitante",
+          bold: true,
+          margin: [0, 30, 0, 0],
+          alignment: "center",
         },
-        //tabla solicitante
         {
           table: {
-            widths: ['*', '*', 140],
+            widths: ["*", "*", 140],
             body: [
-              ['Solicitado Por', 'Número de Documento', 'Relación Predio'],
-              [`${radicacion.solicitante}`, `${radicacion.documento}`, `${radicacion.relacionpredio}`]
-            ]
-          }
+              [
+                { text: "Solicitado Por", bold: true },
+                { text: "Numero de Documento", bold: true },
+                { text: "Relación predio", bold: true },
+              ],
+              [
+                `${radicacion.solicitante}`,
+                `${radicacion.documento}`,
+                `${radicacion.relacionpredio}`,
+              ],
+            ],
+          },
         },
         {
-          text: 'Datos De Ubicación del Solicitante', margin: [0, 30, 0, 0], alignment: 'center'
+          text: "Datos De Ubicación del Solicitante",
+          bold: true,
+          margin: [0, 30, 0, 0],
+          alignment: "center",
         },
-        //tabla ubicacion del solicitante
         {
           table: {
-            widths: ['*', '*', 150, 150],
+            widths: ["*", "*", 150, 150],
             body: [
-              ['Departamento', 'Municipio', 'Dirección', 'Teléfono'],
-              [`${radicacion.departamento}`, `${radicacion.municipio}`, `${radicacion.direccion}`, `${radicacion.telefono}`]
-            ]
-          }
+              [
+                { text: "Departamento", bold: true },
+                { text: "Municipio", bold: true },
+                { text: "Dirección", bold: true },
+                { text: "Teléfono", bold: true },
+              ],
+              [
+                `${radicacion.departamento}`,
+                `${radicacion.municipio}`,
+                `${radicacion.direccion}`,
+                `${radicacion.telefono}`,
+              ],
+            ],
+          },
         },
         {
-          text: 'Detalle Solicitud', margin: [0, 30, 0, 0], alignment: 'center'
+          text: "Detalle Solicitud",
+          bold: true,
+          margin: [0, 30, 0, 0],
+          alignment: "center",
         },
-        //tabla Detalle Solicitud
         {
           table: {
-            widths: ['*', 320],
+            widths: ["*", 320],
             body: [
-              ['Tramite Solicitado', 'Observación'],
-              [`${radicacion.tramitesolicitud}`, '']
-            ]
-          }
+              [
+                { text: "Trámite Solicitud", bold: true },
+                { text: "Observación", bold: true },
+              ],
+              [`${radicacion.tramitesolicitud}`, ""],
+            ],
+          },
         },
-        {
-          text: 'Detalle Solicitud', margin: [0, 30, 0, 0]
-        },
-        //tabla Documentos Aportados
+        { text: "Detalle Solicitud", margin: [0, 30, 0, 0] },
         {
           table: {
-            widths: ['*', 320],
+            widths: ["*", 320],
             body: [
-              ['Clase Documento', 'Ane'],
-              [`${radicacion.tramitesolicitud}`, `${radicacion.anexo}`]
-            ]
-          }
-        }
-      ]
+              [
+                { text: "Clase Documento", bold: true },
+                { text: "Anexo", bold: true },
+              ],
+              [`${radicacion.tramitesolicitud}`, `${radicacion.anexo}`],
+            ],
+          },
+        },
+      ],
     };
 
-    pdfMake.createPdf(docDefinition).download(`Numero de Solicitud_${radicacion.solicitud}.pdf`);
+    pdfMake
+      .createPdf(docDefinition)
+      .download(`Numero de Solicitud_${radicacion.solicitud}.pdf`);
   };
 
   return (
     <div>
-      {/* Input para ingresar el ID del predio */}
       <input
         type="number"
         value={radicacionId || ""}
@@ -157,12 +263,10 @@ const ConstanciaRadicacion: React.FC = () => {
         Buscar
       </button>
 
-      {/* Mostrar la información del predio si se encuentra */}
       {radicacion && (
-        <div className="property-card flex flex-col gap-2 rounded-sm bg-sky-200 p-5  mt-10">
+        <div className="property-card flex flex-col gap-2 rounded-sm bg-sky-200 p-5 mt-10">
           <h2 className="font-bold text-xl">Constancia de Radicación</h2>
           <p>
-            {" "}
             <span className="font-semibold">Numero Solicitud:</span>{" "}
             {radicacion.solicitud}
           </p>
