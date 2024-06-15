@@ -14,6 +14,8 @@ const Sidebar: React.FC<SidebarProps> = () => {
         <ul className='flex flex-col gap-5 cursor-pointer m-4'>
           <Link className='border-2 rounded-sm text-center' href={'/predios'}>Predios</Link>
           <Link className='border-2 rounded-sm text-center' href={'/ciudades'}>Ciudades</Link>
+          <Link className='border-2 rounded-sm text-center' href={'/descargas'}>Descargas</Link>
+          <Link className='border-2 rounded-sm text-center' href={'/prueba'}>Prueba</Link>
         </ul>
 
         <div className="flex gap-2 items-center border-t p-2">
