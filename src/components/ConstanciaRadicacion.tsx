@@ -60,6 +60,7 @@ const ConstanciaRadicacion: React.FC = () => {
 
     const imgHeader = await loadImageAsBase64("/imgheader.png");
     const imgFooter = await loadImageAsBase64("/imgfooter.png");
+    const imgBg = await loadImageAsBase64("/imgbg.png");
     const logo = await loadImageAsBase64("/logo.jpg");
 
     const docDefinition: TDocumentDefinitions = {
@@ -67,22 +68,33 @@ const ConstanciaRadicacion: React.FC = () => {
         {
           image: imgHeader,
           width: 600,
-          margin: [0, 0, 0, 20],
+          margin: [0, 0, 0, 0],
         },
       ],
       footer: function (currentPage, pageCount) {
         return {
           stack: [
-            // {
-            //   image: imgFooter,
-            //   width: 600,
-            // },
+            {
+              image: imgFooter,
+              width: 400,
+              absolutePosition: { x: 500, y: 750 }
+            },
             {
               text: currentPage.toString() + " / " + pageCount,
               alignment: "right",
               margin: [0, 0, 30, 0],
             },
           ],
+        };
+      },
+      background: function (currentPage, pageSize) {
+        const imgSize = 600; // Tamaño deseado para la imagen cuadrada
+        return {
+          image: imgBg,
+          width: imgSize,
+          height: imgSize,
+          absolutePosition: { x: (pageSize.width - imgSize) / 2, y: (pageSize.height - imgSize) / 2 },
+          opacity: 0.1
         };
       },
       content: [
@@ -97,7 +109,7 @@ const ConstanciaRadicacion: React.FC = () => {
                 {
                   stack: [
                     {
-                      text: "Sintax",
+                      text: "Sictax",
                       bold: true,
                       fontSize: 10,
                     },
@@ -107,15 +119,9 @@ const ConstanciaRadicacion: React.FC = () => {
                     },
                   ],
                   margin: [0,30,0,0],
-                  //   text: "Sintax",
-                  //   bold: true,
-                  //   fontSize: 10,
-                  // },
-                  // {
-                  //   text: "Gestión Catastral",
-                  //   fontSize: 8,
                 },
               ],
+              margin:[0,10,0,0],
             },
 
             {
