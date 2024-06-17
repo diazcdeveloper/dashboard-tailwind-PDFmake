@@ -3,7 +3,7 @@ import ConstanciaRadicacion from "@/components/ConstanciaRadicacion"
 function page() {
   return (
     <div>
-        Ingresa la ID de tu solicitud y descargala
+        Ingresa el <span className="text-xl font-extrabold">ID 1</span> para generar el PDF de ejemplo
         <ConstanciaRadicacion/>
     </div>
   )
