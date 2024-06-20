@@ -19,7 +19,7 @@ export const generatePDF = async (certificado: Certificado) => {
       margin: [20, 10, 0, 0],
     },
     footer: (currentPage, pageCount) => ({
-      text: `${currentPage} / ${pageCount}`,
+      text: `Página ${currentPage} de ${pageCount}`,
       alignment: "right",
       margin: [0, 0, 30, 0],
     }),

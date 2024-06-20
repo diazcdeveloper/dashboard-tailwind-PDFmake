@@ -10,7 +10,7 @@ export const generatePDF = async (radicacion: Certificado) => {
   const imgHeader = await loadImageAsBase64("/imgheader.png");
   const imgFooter = await loadImageAsBase64("/imgfooter.png");
   const imgBg = await loadImageAsBase64("/imgbg.png");
-  const logo = await loadImageAsBase64("/logo.jpg");
+  const logo = await loadImageAsBase64("/logo-noBg.png");
 
   const docDefinition: TDocumentDefinitions = {
     // header: [{ image: imgHeader, width: 600 }],
@@ -18,7 +18,7 @@ export const generatePDF = async (radicacion: Certificado) => {
       stack: [
         // { image: imgFooter, width: 400, absolutePosition: { x: 500, y: 750 } },
         {
-          text: `${currentPage} / ${pageCount}`,
+          text: `Página ${currentPage} de ${pageCount}`,
           alignment: "right",
           margin: [0, 0, 30, 0],
         },
