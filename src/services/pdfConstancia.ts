@@ -10,7 +10,7 @@ export const generatePDF = async (radicacion: Certificado) => {
   const imgHeader = await loadImageAsBase64("/imgheader.png");
   const imgFooter = await loadImageAsBase64("/imgfooter.png");
   const imgBg = await loadImageAsBase64("/imgbg.png");
-  const logo = await loadImageAsBase64("/logo-noBg.png");
+  const logo = await loadImageAsBase64("/logo.png");
 
   const docDefinition: TDocumentDefinitions = {
     // header: [{ image: imgHeader, width: 600 }],
