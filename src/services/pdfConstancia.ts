@@ -13,10 +13,10 @@ export const generatePDF = async (radicacion: Certificado) => {
   const logo = await loadImageAsBase64("/logo.jpg");
 
   const docDefinition: TDocumentDefinitions = {
-    header: [{ image: imgHeader, width: 600 }],
+    // header: [{ image: imgHeader, width: 600 }],
     footer: (currentPage, pageCount) => ({
       stack: [
-        { image: imgFooter, width: 400, absolutePosition: { x: 500, y: 750 } },
+        // { image: imgFooter, width: 400, absolutePosition: { x: 500, y: 750 } },
         {
           text: `${currentPage} / ${pageCount}`,
           alignment: "right",
@@ -24,13 +24,15 @@ export const generatePDF = async (radicacion: Certificado) => {
         },
       ],
     }),
-    background: (currentPage, pageSize) => ({
-      image: imgBg,
-      width: 600,
-      height: 600,
-      absolutePosition: { x: (pageSize.width - 600) / 2, y: (pageSize.height - 600) / 2 },
-      opacity: 0.1,
-    }),
+    background: function (currentPage, pageSize) {
+      return {
+        image: imgBg,
+        width: pageSize.width,
+        height: pageSize.height,
+        absolutePosition: { x: 0, y: 0 },
+        opacity: 1 // Ajusta la opacidad si es necesario
+      };
+    },
     content: [
       {
         columns: [
@@ -56,7 +58,7 @@ export const generatePDF = async (radicacion: Certificado) => {
             ],
           },
         ],
-        margin: [0, 50, 0, 0],
+        margin: [0, 0, 0, 0],
       },
       { text: "CONSTANCIA DE RADICACIÓN", bold: true, fontSize: 14, alignment: "center", margin: [0, 10] },
       { text: "Datos Solicitud", bold: true, alignment: "center" },

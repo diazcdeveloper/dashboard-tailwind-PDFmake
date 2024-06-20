@@ -15,4 +15,5 @@ export interface Certificado {
     tramitesolicitud: string;
     clasedocumento: string;
     anexo: string;
+    subdirector_sincelejo: string;
   }

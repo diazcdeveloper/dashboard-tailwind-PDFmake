@@ -3,10 +3,10 @@
 
 import React, { useState } from "react";
 import { fetchData } from "@/services/api";
-import { generatePDF } from "@/services/pdfCertificadoIncripcion";
+import { generatePDF } from "@/services/pdfcertificadoNoInscripcion";
 import { Certificado } from "@/types";
 
-const CertificadoInscripcion: React.FC = () => {
+const CertificadoNoInscripcion: React.FC = () => {
   const [inscripcionId, setInscripcionId] = useState<number | null>(null);
   const [inscripcion, setInscripcion] = useState<Certificado | null>(null);
 
@@ -38,9 +38,9 @@ const CertificadoInscripcion: React.FC = () => {
 
       {inscripcion && (
         <div className="flex flex-col gap-2 rounded-sm bg-sky-200 p-5 mt-10 w-fit">
-          <h2 className="font-bold text-xl">Certificado Inscripción</h2>
+          <h2 className="font-bold text-xl">Certificado No Inscrito</h2>
           <p>
-            <span className="font-semibold">Numero del Solicitante:</span>{" "}
+            <span className="font-semibold">Nombre del Solicitante:</span>{" "}
             {inscripcion.solicitante}
           </p>
 
@@ -48,7 +48,7 @@ const CertificadoInscripcion: React.FC = () => {
             className="rounded-sm bg-slate-400 p-3 mt-4"
             onClick={handleGeneratePDF}
           >
-            Generar Certificado PDF
+            Generar Certificado No inscripción PDF
           </button>
         </div>
       )}
@@ -56,6 +56,6 @@ const CertificadoInscripcion: React.FC = () => {
   );
 };
 
-export default CertificadoInscripcion;
+export default CertificadoNoInscripcion;
 
 
