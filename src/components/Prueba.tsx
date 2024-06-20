@@ -16,7 +16,7 @@ const Prueba: React.FC = () => {
 
     const docDefinition: TDocumentDefinitions = {
       content: [
-        {text: 'ESTO SE ESTA PONIENDO BUENO', bold: true, fontSize: 30}
+        {text: 'Pueba de descarga', bold: true, fontSize: 30}
       ],
     };
 

@@ -1,5 +1,6 @@
-export interface Radicacion {
+export interface Certificado {
     id: number;
+    numerocertificado: string;
     solicitud: string;
     predial: string;
     fecha: string;

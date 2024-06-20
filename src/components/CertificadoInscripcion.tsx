@@ -1,31 +1,32 @@
+
 "use client";
 
 import React, { useState } from "react";
 import { fetchData } from "@/services/api";
-import { generatePDF } from "@/services/pdfConstancia";
+import { generatePDF } from "@/services/pdfCertificadoIncripcion";
 import { Certificado } from "@/types";
 
-const ConstanciaRadicacion: React.FC = () => {
-  const [radicacionId, setRadicacionId] = useState<number | null>(null);
-  const [radicacion, setRadicacion] = useState<Certificado | null>(null);
+const CertificadoInscripcion: React.FC = () => {
+  const [inscripcionId, setInscripcionId] = useState<number | null>(null);
+  const [inscripcion, setInscripcion] = useState<Certificado | null>(null);
 
   const handleSearch = async () => {
     const data = await fetchData();
-    const foundRadicacion = data.find((p) => p.id === radicacionId);
-    setRadicacion(foundRadicacion || null);
+    const foundinscripcion = data.find((p) => p.id === inscripcionId);
+    setInscripcion(foundinscripcion || null);
   };
 
   const handleGeneratePDF = async () => {
-    if (!radicacion) return;
-    await generatePDF(radicacion);
+    if (!inscripcion) return;
+    await generatePDF(inscripcion);
   };
 
   return (
     <div>
       <input
         type="number"
-        value={radicacionId || ""}
-        onChange={(e) => setRadicacionId(Number(e.target.value))}
+        value={inscripcionId || ""}
+        onChange={(e) => setInscripcionId(Number(e.target.value))}
         placeholder="Ingrese ID del predio"
       />
       <button
@@ -35,19 +36,19 @@ const ConstanciaRadicacion: React.FC = () => {
         Buscar
       </button>
 
-      {radicacion && (
+      {inscripcion && (
         <div className="flex flex-col gap-2 rounded-sm bg-sky-200 p-5 mt-10 w-fit">
           <h2 className="font-bold text-xl">Constancia de Radicación</h2>
           <p>
             <span className="font-semibold">Numero Solicitud:</span>{" "}
-            {radicacion.solicitud}
+            {inscripcion.solicitante}
           </p>
 
           <button
             className="rounded-sm bg-slate-400 p-3 mt-4"
             onClick={handleGeneratePDF}
           >
-            Generar Solicitud PDF
+            Generar Certificado PDF
           </button>
         </div>
       )}
@@ -55,4 +56,6 @@ const ConstanciaRadicacion: React.FC = () => {
   );
 };
 
-export default ConstanciaRadicacion;
+export default CertificadoInscripcion;
+
+

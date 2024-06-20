@@ -1,6 +1,6 @@
-import { Radicacion } from "@/types";
+import { Certificado } from "@/types";
 
-export const fetchRadicacionData = async (): Promise<Radicacion[]> => {
+export const fetchData = async (): Promise<Certificado[]> => {
   const response = await fetch("/datos.json");
   return response.json();
 };

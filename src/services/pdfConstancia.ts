@@ -1,12 +1,12 @@
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { TDocumentDefinitions } from "pdfmake/interfaces";
-import { Radicacion } from "@/types";
+import { Certificado } from "@/types";
 import { loadImageAsBase64 } from "@/utils/loadImageAsBase64";
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-export const generatePDF = async (radicacion: Radicacion) => {
+export const generatePDF = async (radicacion: Certificado) => {
   const imgHeader = await loadImageAsBase64("/imgheader.png");
   const imgFooter = await loadImageAsBase64("/imgfooter.png");
   const imgBg = await loadImageAsBase64("/imgbg.png");

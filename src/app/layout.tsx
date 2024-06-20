@@ -21,7 +21,7 @@ export default function RootLayout({
         <div className="w-60 border-r h-screen border-gray-400 ">
           <Sidebar children={undefined}/>
         </div>
-        <main className="m-10">
+        <main className="w-full">
           {children}
         </main>
       </body>
