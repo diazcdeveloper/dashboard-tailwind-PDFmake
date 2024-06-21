@@ -16,4 +16,6 @@ export interface Certificado {
     clasedocumento: string;
     anexo: string;
     subdirector_sincelejo: string;
+    areaterreno: string;
+    areaconstruida: string;
   }

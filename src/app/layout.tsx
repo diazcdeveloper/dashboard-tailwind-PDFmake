@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={(inter.className, ' flex')}>
-        <div className="w-60 border-r h-screen border-gray-400 ">
+        <div className="w-[284px]">
           <Sidebar children={undefined}/>
         </div>
         <main className="w-full">

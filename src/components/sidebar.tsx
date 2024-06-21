@@ -8,11 +8,10 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = () => {
   return (
-    <div className="h-full flex flex-col justify-between">
+    <div className="h-full border-r fixed flex flex-col justify-between">
         <Link className="font-extrabold text-2xl p-2 cursor-pointer" href={'/'}>Sidebar</Link>
 
         <ul className='flex flex-col gap-5 cursor-pointer m-4'>
-          {/* <Link className='border-2 rounded-sm text-center' href={'/predios'}>Predios</Link> */}
           <Link className='border-2 rounded-sm text-center' href={'/descargas'}>Descargas</Link>
           <Link className='border-2 rounded-sm text-center' href={'/prueba'}>Prueba</Link>
         </ul>
