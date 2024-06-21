@@ -13,19 +13,19 @@ function page() {
       </div>
 
       <div>
-        <h1 className="font-extrabold text-2xl mb-4">CERTIFICADO INSCRIPCIÓN CATASTRAL</h1>
+        <h1 className="font-extrabold text-2xl mb-4 border-t">CERTIFICADO INSCRIPCIÓN CATASTRAL</h1>
         Ingresa el <span className="text-xl font-extrabold">ID 1</span> para generar el PDF de ejemplo
         <CertificadoInscripcion/>
       </div>
 
       <div>
-        <h1 className="font-extrabold text-2xl mb-4">CERTIFICADO INSCRIPCIÓN CATASTRAL</h1>
+        <h1 className="font-extrabold text-2xl mb-4 border-t">CERTIFICADO INSCRIPCIÓN CATASTRAL</h1>
         Ingresa el <span className="text-xl font-extrabold">ID 1</span> para generar el PDF de ejemplo
         <CertificadoNoInscripcion/>
       </div>
 
       <div>
-        <h1 className="font-extrabold text-2xl mb-4">CERTIFICADO PLANO PREDIAL CATASTRAL</h1>
+        <h1 className="font-extrabold text-2xl mb-4 border-t">CERTIFICADO PLANO PREDIAL CATASTRAL</h1>
         Ingresa el <span className="text-xl font-extrabold">ID 1</span> para generar el PDF de ejemplo
         <CertificadoPlanoPredial/>
       </div>
