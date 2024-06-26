@@ -47,7 +47,6 @@ export const generatePDF = async (radicacion: Certificado) => {
                 margin: [0, 30, 0, 0],
               },
             ],
-            margin: [0, 10, 0, 0],
           },
           {
             width: "50%",
@@ -58,7 +57,6 @@ export const generatePDF = async (radicacion: Certificado) => {
             ],
           },
         ],
-        margin: [0, 0, 0, 0],
       },
       { text: "CONSTANCIA DE RADICACIÓN", bold: true, fontSize: 14, alignment: "center", margin: [0, 10] },
       { text: "Datos Solicitud", bold: true, alignment: "center" },

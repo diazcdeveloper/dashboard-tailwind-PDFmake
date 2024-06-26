@@ -13,7 +13,6 @@ export const generatePDF = async (certificado: Certificado) => {
   const logo = await loadImageAsBase64("/logo.png");
 
   const docDefinition: TDocumentDefinitions = {
-    // header: [{ image: imgHeader, width: 600, marginTop: -30 }],
     footer: (currentPage, pageCount) => ({
       stack: [
         { image: imgFooter, width: 400, absolutePosition: { x: 500, y: 750 } },
@@ -35,9 +34,29 @@ export const generatePDF = async (certificado: Certificado) => {
     },
     content: [
       {
-        image: logo,
-        width: 80,
-        marginTop: 20,
+        columns: [
+          {
+            columns: [
+              { image: logo, width: 80 },
+              {
+                stack: [
+                  { text: "Sictax", bold: true, fontSize: 10 },
+                  { text: "Gestión Catastral", fontSize: 8 },
+                ],
+                margin: [0, 30, 0, 0],
+              },
+            ],
+          },
+          {
+            width: "50%",
+            alignment: "right",
+            stack: [
+              { qr: "text in QR", fit: 80 },
+              { text: "Sello de radicacion", fontSize: 8, margin: [0, 5, 0, 0] },
+            ],
+          },
+        ],
+        margin: [0, 0, 0, 0],
       },
       {
         text: `CERTIFICADO INSCRIPCIÓN CATASTRAL No ${certificado.numerocertificado}`,

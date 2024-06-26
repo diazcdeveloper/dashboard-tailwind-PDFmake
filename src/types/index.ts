@@ -18,4 +18,5 @@ export interface Certificado {
     subdirector_sincelejo: string;
     areaterreno: string;
     areaconstruida: string;
+    avaluo: string;
   }
