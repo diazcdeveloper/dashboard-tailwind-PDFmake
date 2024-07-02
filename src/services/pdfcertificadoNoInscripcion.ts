@@ -61,6 +61,7 @@ export const generatePDF = async (certificado: Certificado) => {
         text: "CERTIFICADO DE NO TENER INSCRITO EN CATASTRO BIENES INMUEBLES CERTIFICADOS",
         alignment: "center",
         marginTop: 30,
+        marginBottom: 30,
         bold: true,
       },
       {
@@ -88,8 +89,14 @@ export const generatePDF = async (certificado: Certificado) => {
         text: `Valido hasta 30 dias despues de la fecha ${certificado.fecha}`,
       },
       {
-        text: `Generado por: ${certificado.subdirector_sincelejo} - ${certificado.municipio}`,
+        text: `Generado por: ${certificado.subdirector_sincelejo} - ${certificado.municipio}`, marginBottom: 80
       },
+      {
+        text: 'FIRMAxxx', alignment: 'center'
+      },
+      {
+        text: 'GERENTE', alignment: 'center', bold: true
+      }
     ],
   };
 
