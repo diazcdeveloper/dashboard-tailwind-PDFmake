@@ -3,6 +3,7 @@ import ConstanciaRadicacion from "@/components/ConstanciaRadicacion"
 import CertificadoNoInscripcion from "@/components/CertificadoNoInscripcion";
 import CertificadoPlanoPredial from "@/components/CertificadoPlanoPredial";
 import CertificadoAvaluoCatastral from "@/components/CertificadoAvaluoCatastral";
+import ConstanciaRadicacionDos from "@/components/ConstanciaRadicacionDos";
 
 function page() {
   return (
@@ -11,6 +12,12 @@ function page() {
         <h1 className="font-extrabold text-2xl mb-4">CONSTANCIA DE RADICACIÓN</h1>
         Ingresa el <span className="text-xl font-extrabold">ID 1</span> para generar el PDF de ejemplo
         <ConstanciaRadicacion/>
+      </div>
+
+      <div>
+        <h1 className="font-extrabold text-2xl mb-4">CONSTANCIA DE RADICACIÓN DOS</h1>
+        Ingresa el <span className="text-xl font-extrabold">ID 1</span> para generar el PDF de ejemplo
+        <ConstanciaRadicacionDos/>
       </div>
 
       <div>
