@@ -5,6 +5,7 @@ import CertificadoPlanoPredial from "@/components/CertificadoPlanoPredial";
 import CertificadoAvaluoCatastral from "@/components/CertificadoAvaluoCatastral";
 import ConstanciaRadicacionDos from "@/components/ConstanciaRadicacionDos";
 import CertificadoNoInscripcionDos from "@/components/CertificadoNoInscripcionDos";
+import CertificadoPlanoPredialDos from "@/components/CertificadoPlanoPredialDos";
 
 function page() {
   return (
@@ -43,6 +44,12 @@ function page() {
         <h1 className="font-extrabold text-2xl mb-4 border-t">CERTIFICADO PLANO PREDIAL CATASTRAL</h1>
         Ingresa el <span className="text-xl font-extrabold">ID 1</span> para generar el PDF de ejemplo
         <CertificadoPlanoPredial/>
+      </div>
+
+      <div>
+        <h1 className="font-extrabold text-2xl mb-4 border-t">CERTIFICADO PLANO PREDIAL CATASTRAL --- DOS</h1>
+        Ingresa el <span className="text-xl font-extrabold">ID 1</span> para generar el PDF de ejemplo
+        <CertificadoPlanoPredialDos/>
       </div>
 
       <div>
