@@ -130,7 +130,7 @@ export const generatePDF = async (radicacion: Certificado) => {
           ],
         },
       },
-      { text: "Detalle Solicitud", margin: [0, 30, 0, 0] },
+      { text: "Detalle Solicitud", bold: true, margin: [0, 30, 0, 0] },
       {
         table: {
           widths: ["*", 320],

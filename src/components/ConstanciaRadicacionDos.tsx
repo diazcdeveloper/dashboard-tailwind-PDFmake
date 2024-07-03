@@ -37,7 +37,7 @@ const ConstanciaRadicacionDos: React.FC = () => {
 
       {radicacion && (
         <div className="flex flex-col gap-2 rounded-sm bg-sky-200 p-5 mt-10 w-fit">
-          <h2 className="font-bold text-xl">Constancia de Radicación</h2>
+          <h2 className="font-bold text-xl">Constancia de Radicación --- DOS</h2>
           <p>
             <span className="font-semibold">Numero Solicitud:</span>{" "}
             {radicacion.solicitud}

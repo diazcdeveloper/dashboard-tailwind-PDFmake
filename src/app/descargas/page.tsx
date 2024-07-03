@@ -4,6 +4,7 @@ import CertificadoNoInscripcion from "@/components/CertificadoNoInscripcion";
 import CertificadoPlanoPredial from "@/components/CertificadoPlanoPredial";
 import CertificadoAvaluoCatastral from "@/components/CertificadoAvaluoCatastral";
 import ConstanciaRadicacionDos from "@/components/ConstanciaRadicacionDos";
+import CertificadoNoInscripcionDos from "@/components/CertificadoNoInscripcionDos";
 
 function page() {
   return (
@@ -15,7 +16,7 @@ function page() {
       </div>
 
       <div>
-        <h1 className="font-extrabold text-2xl mb-4">CONSTANCIA DE RADICACIÓN DOS</h1>
+        <h1 className="font-extrabold text-2xl mb-4">CONSTANCIA DE RADICACIÓN --- DOS</h1>
         Ingresa el <span className="text-xl font-extrabold">ID 1</span> para generar el PDF de ejemplo
         <ConstanciaRadicacionDos/>
       </div>
@@ -30,6 +31,12 @@ function page() {
         <h1 className="font-extrabold text-2xl mb-4 border-t">CERTIFICADO NO INSCRIPCIÓN CATASTRAL</h1>
         Ingresa el <span className="text-xl font-extrabold">ID 1</span> para generar el PDF de ejemplo
         <CertificadoNoInscripcion/>
+      </div>
+
+      <div>
+        <h1 className="font-extrabold text-2xl mb-4 border-t">CERTIFICADO NO INSCRIPCIÓN CATASTRAL --- DOS</h1>
+        Ingresa el <span className="text-xl font-extrabold">ID 1</span> para generar el PDF de ejemplo
+        <CertificadoNoInscripcionDos/>
       </div>
 
       <div>
