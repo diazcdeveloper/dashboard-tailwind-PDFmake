@@ -20,4 +20,5 @@ export interface Certificado {
     areaconstruida: string;
     avaluo: string;
     resolucion: string;
+    matricula: string;
   }
