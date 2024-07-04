@@ -19,4 +19,5 @@ export interface Certificado {
     areaterreno: string;
     areaconstruida: string;
     avaluo: string;
+    resolucion: string;
   }

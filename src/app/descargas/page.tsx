@@ -6,6 +6,7 @@ import CertificadoAvaluoCatastral from "@/components/CertificadoAvaluoCatastral"
 import ConstanciaRadicacionDos from "@/components/ConstanciaRadicacionDos";
 import CertificadoNoInscripcionDos from "@/components/CertificadoNoInscripcionDos";
 import CertificadoPlanoPredialDos from "@/components/CertificadoPlanoPredialDos";
+import Resolucion from "@/components/Resolucion";
 
 function page() {
   return (
@@ -56,6 +57,12 @@ function page() {
         <h1 className="font-extrabold text-2xl mb-4 border-t">CERTIFICADO AVALÚO CATASTRAL</h1>
         Ingresa el <span className="text-xl font-extrabold">ID 1</span> para generar el PDF de ejemplo
         <CertificadoAvaluoCatastral/>
+      </div>
+
+      <div>
+        <h1 className="font-extrabold text-2xl mb-4 border-t">RESOLUCION</h1>
+        Ingresa el <span className="text-xl font-extrabold">ID 1</span> para generar el PDF de ejemplo
+        <Resolucion/>
       </div>
       
     </div>

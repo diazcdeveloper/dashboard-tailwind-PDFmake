@@ -16,11 +16,7 @@ export const generatePDF = async (certificado: Certificado) => {
   const predio = await loadImageAsBase64("/predio.png");
 
   const docDefinition: TDocumentDefinitions = {
-    header: {
-      image: logo,
-      width: 80,
-      margin: [20, 10, 0, 0],
-    },
+
     footer: (currentPage, pageCount) => ({
       stack: [
         // { image: imgFooter, width: 400, absolutePosition: { x: 500, y: 750 } },
@@ -42,11 +38,29 @@ export const generatePDF = async (certificado: Certificado) => {
     },
     content: [
       {
-        qr: "text in QR",
-        fit: 80,
-        alignment: "center",
-        marginTop: 30,
-        marginBottom: 15,
+        columns: [
+          {
+            columns: [
+              { image: logo, width: 80 },
+              {
+                stack: [
+                  { text: "Sictax", bold: true, fontSize: 10 },
+                  { text: "Gestión Catastral", fontSize: 8 },
+                ],
+                margin: [0, 30, 0, 0],
+              },
+            ],
+          },
+          {
+            width: "50%",
+            alignment: "right",
+            stack: [
+              { qr: "text in QR", fit: 80 },
+              { text: "Sello de radicacion", fontSize: 8, margin: [0, 5, 0, 0] },
+            ],
+          },
+        ],
+        margin: [0, 0, 0, 0],
       },
       {
         text: "CERTIFICADO PLANO PREDIAL CATASTRAL",
