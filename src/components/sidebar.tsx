@@ -13,6 +13,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
 
         <ul className='flex flex-col gap-5 cursor-pointer m-4'>
           <Link className='border-2 rounded-sm text-center' href={'/descargas'}>Descargas</Link>
+          <Link className='border-2 rounded-sm text-center' href={'/productos'}>Productos</Link>
           <Link className='border-2 rounded-sm text-center' href={'/prueba'}>Prueba</Link>
         </ul>
 

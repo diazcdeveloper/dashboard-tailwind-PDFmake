@@ -1,0 +1,46 @@
+[
+    {
+      "referencia": "201780001000000040098000000000",
+      "numero_de_solicitud": "SOL456",
+      "producto_solicitado": "Certificado",
+      "sub_tipo": "C0001 - CERTIFICADO CATASTRAL MUNICIPAL",
+      "fecha": "2024-07-01",
+      "destino_a": "NOTARIA",
+      "estado": "GENERADO",
+      "pdf_generado": "Ver Documento",
+      "cambiar_estado": "Validación"
+    },
+    {
+      "referencia": "REF124",
+      "numero_de_solicitud": "SOL457",
+      "producto_solicitado": "Certificado",
+      "sub_tipo": "C0001 - CERTIFICADO CATASTRAL MUNICIPAL",
+      "fecha": "2024-07-02",
+      "destino_a": "NOTARIA",
+      "estado": "CGENERADO",
+      "pdf_generado": "Ver Documento",
+      "cambiar_estado": "Validación"
+    },
+    {
+      "referencia": "201780001000000040098000000000",
+      "numero_de_solicitud": "SOL456",
+      "producto_solicitado": "Certificado",
+      "sub_tipo": "C0001 - CERTIFICADO CATASTRAL MUNICIPAL",
+      "fecha": "2024-07-01",
+      "destino_a": "NOTARIA",
+      "estado": "GENERADO",
+      "pdf_generado": "Ver Documento",
+      "cambiar_estado": "Validación"
+    },
+    {
+      "referencia": "REF124",
+      "numero_de_solicitud": "SOL457",
+      "producto_solicitado": "Certificado",
+      "sub_tipo": "C0001 - CERTIFICADO CATASTRAL MUNICIPAL",
+      "fecha": "2024-07-02",
+      "destino_a": "NOTARIA",
+      "estado": "CGENERADO",
+      "pdf_generado": "Ver Documento",
+      "cambiar_estado": "Validación"
+    }
+  ]

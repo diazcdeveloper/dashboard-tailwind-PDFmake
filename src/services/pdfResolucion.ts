@@ -89,7 +89,7 @@ export const generatePDF = async (certificado: Certificado) => {
         bold: true,
         alignment: "center",
         marginBottom: 10,
-        fontSize: 8,
+        fontSize: 10,
       },
       {
         text: "Que el señor AREA METROPOLITANA DE BARRANQUILLA, identificado con nit. No. 800055568, en su condición de gestor, del predio identificado con la referencia catastral No. 082960101010100010001000000000, del municipio de GALAPA, solicitó mediante comunicación radicada 01- 301-2023-0003509 de fecha 31/10/2023, el procedimiento catastral de mutación de novena clase, soportado en los siguientes documentos justificativos: acto administrativo numero 12121 del 2023-10-31, , copia del c al No. 122-121212, de fecha.",
@@ -106,7 +106,7 @@ export const generatePDF = async (certificado: Certificado) => {
         bold: true,
         alignment: "center",
         marginBottom: 10,
-        fontSize: 8,
+        fontSize: 10,
       },
       {
         text: `ARTÍCULO PRIMERO: Ordenar la inscripción en los registros catastrales del ÁREA METROPOLITANA ${certificado.municipio}, de los siguientes cambios: `,
@@ -128,20 +128,23 @@ export const generatePDF = async (certificado: Certificado) => {
                 text: "CANCELA",
                 bold: true,
                 alignment: "center",
-                fillColor: "#D3D3D3"
+                fillColor: "#D3D3D3",
+                fontSize: 10,
               },
               {
                 text: "INSCRIBE",
                 bold: true,
                 alignment: "center",
-                fillColor: "#D3D3D3"
+                fillColor: "#D3D3D3",
+                fontSize: 10,
               },
             ],
             [
               {
                 text: "Interesados",
                 bold: true,
-                fillColor: "#ADD8E6"
+                fillColor: "#ADD8E6",
+                fontSize: 10,
               },
               {
                 stack: [
@@ -164,7 +167,8 @@ export const generatePDF = async (certificado: Certificado) => {
               {
                 text: "Dirección",
                 bold: true,
-                fillColor: "#ADD8E6"
+                fillColor: "#ADD8E6",
+                fontSize: 10,
               },
               {
                 text: `${certificado.municipio} - ${certificado.direccion}`,
@@ -179,7 +183,8 @@ export const generatePDF = async (certificado: Certificado) => {
               {
                 text: "Matricula",
                 bold: true,
-                fillColor: "#ADD8E6"
+                fillColor: "#ADD8E6",
+                fontSize: 10,
               },
               {
                 text: `${certificado.matricula}`,
@@ -194,7 +199,8 @@ export const generatePDF = async (certificado: Certificado) => {
               {
                 text: "Área terreno",
                 bold: true,
-                fillColor: "#ADD8E6"
+                fillColor: "#ADD8E6",
+                fontSize: 10,
               },
               {
                 text: `${certificado.areaterreno}`,
@@ -209,7 +215,8 @@ export const generatePDF = async (certificado: Certificado) => {
               {
                 text: "Área construida",
                 bold: true,
-                fillColor: "#ADD8E6"
+                fillColor: "#ADD8E6",
+                fontSize: 10,
               },
               {
                 text: `${certificado.areaconstruida}`,
@@ -224,7 +231,8 @@ export const generatePDF = async (certificado: Certificado) => {
               {
                 text: "Avaluo Catastral",
                 bold: true,
-                fillColor: "#ADD8E6"
+                fillColor: "#ADD8E6",
+                fontSize: 10,
               },
               {
                 text: `${certificado.avaluo}`,
@@ -274,5 +282,5 @@ export const generatePDF = async (certificado: Certificado) => {
 
   pdfMake
     .createPdf(docDefinition)
-    .download(`Numero de Solicitud_${certificado.solicitud}.pdf`);
+    .download(`Numero de Solicitud_${certificado.resolucion}.pdf`);
 };
